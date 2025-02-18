@@ -1,24 +1,60 @@
-//
-//  ContentView.swift
-//  ProTrader 4
-//
-//  Created by Keonta  on 2/18/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedTab = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selectedTab) {
+            DashboardView()
+                .tabItem {
+                    Image(systemName: "chart.bar.fill")
+                    Text("Dashboard")
+                }
+                .tag(0)
+            
+            JournalView()
+                .tabItem {
+                    Image(systemName: "note.text")
+                    Text("Journal")
+                }
+                .tag(1)
+            
+            AnalysisView()
+                .tabItem {
+                    Image(systemName: "chart.pie.fill")
+                    Text("Analysis")
+                }
+                .tag(2)
+            
+            TradingPlanView()
+                .tabItem {
+                    Image(systemName: "list.bullet.clipboard")
+                    Text("Plan")
+                }
+                .tag(3)
+            
+            CalendarView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Calendar")
+                }
+                .tag(4)
+            
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
+                .tag(5)
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+// Preview provider
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
+
+// End of file. No additional code.
